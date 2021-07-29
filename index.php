@@ -23,7 +23,15 @@ function whatIsHappening() {
 
 // TODO: provide some products (you may overwrite the example)
 $products = [
-    ['name' => 'Your favourite drink', 'price' => 2.5],
+    ['name' => 'PHP Novice - brown charm', 'price' => 100],
+    ['name' => 'PHP Apprentice - yellow charm', 'price' => 500],
+    ['name' => 'PHP Bodger - purple charm', 'price' => 1000],
+    ['name' => 'PHP Journeyman - blue charm', 'price' => 5000],
+    ['name' => 'PHP Scholar - green charm', 'price' => 10000],
+    ['name' => 'PHP Master - red charm', 'price' => 20000],
+    ['name' => 'PHP Grand Master - gold charm', 'price' => 50000],
+    ['name' => 'PHP Legend - white charm', 'price' => 100000],
+    ['name' => 'PHP God - black charm', 'price' => 500000],
 ];
 
 $totalValue = 0;
