@@ -47,8 +47,25 @@ $totalValue = 0;
 
 function validate()
 {
+    $emptyFields = [];
     // This function will send a list of invalid fields back
-    return [];
+    if (empty($_POST['email'])) {
+        array_push($emptyFields, 'email');
+    }
+    if (empty($_POST['street'])) {
+        array_push($emptyFields, 'street');
+    }
+    if (empty($_POST['streetnumber'])) {
+        array_push($emptyFields, 'streetnumber');
+    }
+    if (empty($_POST['city'])) {
+        array_push($emptyFields, 'city');
+    }
+    if (empty($_POST['zipcode'])) {
+        array_push($emptyFields, 'zipcode');
+    }
+    var_dump($emptyFields);
+    return $emptyFields;
 }
 
 function handleForm()
@@ -65,16 +82,38 @@ function handleForm()
     $message .= '<br>';
     $message .= 'Your email: ' . $_POST['email'];
     $message .= '<br>';
-    $message .= 'You have ordered the following products: ' . implode(', ', $productNames);
+    $message .= '<br>';
+    $message .= 'You have ordered the following products: <br>' . implode('<br>', $productNames);
 
-    return $message;
+
 
     // Validation (step 2)
     $invalidFields = validate();
     if (!empty($invalidFields)) {
         // TODO: handle errors
+        if (in_array("email", $invalidFields)) {
+            $message = 'Please fill in your E-mail.';
+        }
+        if (in_array("street", $invalidFields)) {
+            $message .= '<br>';
+            $message .= 'Please fill in your Street.';
+        }
+        if (in_array("streetnumber", $invalidFields)) {
+            $message .= '<br>';
+            $message .= 'Please fill in your Street number.';
+        }
+        if (in_array("city", $invalidFields)) {
+            $message .= '<br>';
+            $message .= 'Please fill in your City.';
+        }
+        if (in_array("zipcode", $invalidFields)) {
+            $message .= '<br>';
+            $message .= 'Please fill in your Zipcode.';
+        }
+        return $message;
     } else {
         // TODO: handle successful submission
+        return $message;
     }
 }
 
