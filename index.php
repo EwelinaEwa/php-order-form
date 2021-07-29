@@ -61,7 +61,7 @@ function handleForm()
         $productNames[] = $products[$productNumber]['name'];
     }
 
-    $message .= 'Your address: ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
+    $message = 'Your address: ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
     $message .= '<br>';
     $message .= 'Your email: ' . $_POST['email'];
     $message .= '<br>';
