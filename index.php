@@ -6,6 +6,11 @@
 // This line makes PHP behave in a more strict way
 declare(strict_types=1);
 
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+
 // We are going to use session variables so we need to enable sessions
 session_start();
 
@@ -14,20 +19,24 @@ function whatIsHappening() {
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
     echo '<h2>$_POST</h2>';
+    echo('<pre>');
     var_dump($_POST);
+    echo('</pre>');
     echo '<h2>$_COOKIE</h2>';
     var_dump($_COOKIE);
     echo '<h2>$_SESSION</h2>';
     var_dump($_SESSION);
 }
 
+whatIsHappening();
+
 // TODO: provide some products (you may overwrite the example)
 $products = [
     ['name' => 'PHP Novice - brown charm', 'price' => 100],
     ['name' => 'PHP Apprentice - yellow charm', 'price' => 500],
-    ['name' => 'PHP Bodger - purple charm', 'price' => 1000],
-    ['name' => 'PHP Journeyman - blue charm', 'price' => 5000],
-    ['name' => 'PHP Scholar - green charm', 'price' => 10000],
+    ['name' => 'PHP Bodger - blue charm', 'price' => 1000],
+    ['name' => 'PHP Journeyman - green charm', 'price' => 5000],
+    ['name' => 'PHP Scholar - purple charm', 'price' => 10000],
     ['name' => 'PHP Master - red charm', 'price' => 20000],
     ['name' => 'PHP Grand Master - gold charm', 'price' => 50000],
     ['name' => 'PHP Legend - white charm', 'price' => 100000],
@@ -46,6 +55,20 @@ function handleForm()
 {
     // TODO: form related tasks (step 1)
 
+    $productNumbers = array_keys($_POST['products']);
+    $productNames = [];
+    foreach ($productNumbers as $productNumber) {
+        $productNames[] = $products[$productNumber]['name'];
+    }
+
+    $message .= 'Your address: ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
+    $message .= '<br>';
+    $message .= 'Your email: ' . $_POST['email'];
+    $message .= '<br>';
+    $message .= 'You have ordered the following products: ' . implode(', ', $productNames);
+
+    return $message;
+
     // Validation (step 2)
     $invalidFields = validate();
     if (!empty($invalidFields)) {
@@ -56,9 +79,10 @@ function handleForm()
 }
 
 // TODO: replace this if by an actual check
-$formSubmitted = false;
+$formSubmitted = !empty($_POST);
+$confirmationMessage = '';
 if ($formSubmitted) {
-    handleForm();
+    $confirmationMessage = handleForm($products);
 }
 
 require 'form-view.php';
