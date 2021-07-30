@@ -111,7 +111,12 @@ function handleForm($products)
             $errorMsg .= 'Please fill in your Zipcode.';
         }
         return $errorMsg;
-    } else {
+    }
+    if (!is_numeric($_POST['zipcode'])) {
+        $errorNumeric = "Zipcode can only have numeric values.";
+        return $errorNumeric;
+    }
+    else {
         // TODO: handle successful submission
         return $message;
     }
