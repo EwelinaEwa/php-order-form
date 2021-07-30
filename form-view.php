@@ -15,9 +15,7 @@
 <div class="container">
     <h1>Place your order</h1>
     <?php if (!empty($confirmationMessage)) { ?>
-        <div class="alert alert-success">
             <?= $confirmationMessage ?>
-        </div>
     <?php }; ?>
 
     <?php // Navigation for when you need it ?>

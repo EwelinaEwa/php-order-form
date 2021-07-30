@@ -123,11 +123,11 @@ function handleForm($products)
             $errorMsg .= '<br>';
             $errorMsg .= 'Please fill in your Zipcode.';
         }
-        return $errorMsg;
+        return '<div class="alert alert-danger"> ' . $errorMsg . '</div>';
     }
     else {
         // TODO: handle successful submission
-        return $message;
+        return '<div class="alert alert-success"> ' . $message . '</div>';
     }
 }
 
