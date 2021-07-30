@@ -99,9 +99,8 @@ function handleForm($products)
         if (in_array("email", $invalidFields)) {
             $errorMsg = 'Please fill in your E-mail.';
         }
-        if (in_array("emailInvalid", $invalidFields)) {
-            $errorMsg .= '<br>';
-            $errorMsg .= "Invalid E-mail format.";
+        elseif (in_array("emailInvalid", $invalidFields)) {
+            $errorMsg = "Invalid E-mail format.";
         }
         if (in_array("street", $invalidFields)) {
             $errorMsg .= '<br>';
@@ -115,14 +114,15 @@ function handleForm($products)
             $errorMsg .= '<br>';
             $errorMsg .= 'Please fill in your City.';
         }
-        if (in_array("zipcodeInvalid", $invalidFields)) {
-            $errorMsg .= '<br>';
-            $errorMsg .= "Zipcode can only have numeric values.";
-        }
         if (in_array("zipcode", $invalidFields)) {
             $errorMsg .= '<br>';
             $errorMsg .= 'Please fill in your Zipcode.';
         }
+        elseif (in_array("zipcodeInvalid", $invalidFields)) {
+            $errorMsg .= '<br>';
+            $errorMsg .= "Zipcode can only have numeric values.";
+        }
+
         return '<div class="alert alert-danger"> ' . $errorMsg . '</div>';
     }
     else {
