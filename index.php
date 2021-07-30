@@ -116,6 +116,10 @@ function handleForm($products)
         $errorNumeric = "Zipcode can only have numeric values.";
         return $errorNumeric;
     }
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $errorEmail = "Invalid email format";
+        return $errorEmail;
+    }
     else {
         // TODO: handle successful submission
         return $message;
