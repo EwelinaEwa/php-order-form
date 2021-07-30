@@ -30,7 +30,6 @@ function whatIsHappening() {
 
 whatIsHappening();
 
-// TODO: provide some products (you may overwrite the example)
 $products = [
     ['name' => 'PHP Novice - brown charm', 'price' => 100],
     ['name' => 'PHP Apprentice - yellow charm', 'price' => 500],
@@ -75,23 +74,6 @@ function validate()
 
 function handleForm($products)
 {
-    // TODO: form related tasks (step 1)
-
-    $productNumbers = array_keys($_POST['products']);
-    $productNames = [];
-    foreach ($productNumbers as $productNumber) {
-        $productNames[] = $products[$productNumber]['name'];
-    }
-
-    $message = 'Your address: ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
-    $message .= '<br>';
-    $message .= 'Your email: ' . $_POST['email'];
-    $message .= '<br>';
-    $message .= '<br>';
-    $message .= 'You have ordered the following products: <br>' . implode('<br>', $productNames);
-
-
-
     // Validation (step 2)
     $invalidFields = validate();
     if (!empty($invalidFields)) {
@@ -123,17 +105,32 @@ function handleForm($products)
             $errorMsg .= "Zipcode can only have numeric values.";
         }
 
-        return '<div class="alert alert-danger"> ' . $errorMsg . '</div>';
-    }
-    else {
-        // TODO: handle successful submission
-        unset($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode'], $_POST['products']);
-        return '<div class="alert alert-success"> ' . $message . '</div>';
+        if (in_array("products", $invalidFields)) {
+            $errorMsg .= '<br>';
+            $errorMsg .= "Please select at least one product.";
+        }
 
+        return '<div class="alert alert-danger"> ' . $errorMsg . '</div>';
+    } else {
+        $productNames = [];
+
+        $productNumbers = array_keys($_POST['products']);
+        foreach ($productNumbers as $productNumber) {
+            $productNames[] = $products[$productNumber]['name'];
+        }
+
+        $message = 'Your address: ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
+        $message .= '<br>';
+        $message .= 'Your email: ' . $_POST['email'];
+        $message .= '<br>';
+        $message .= '<br>';
+        $message .= 'You have ordered the following products: <br>' . implode('<br>', $productNames);
+
+            unset($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode'], $_POST['products']);
+            return '<div class="alert alert-success"> ' . $message . '</div>';
     }
 }
 
-// TODO: replace this if by an actual check
 $formSubmitted = !empty($_POST);
 $confirmationMessage = '';
 if ($formSubmitted) {
@@ -141,5 +138,3 @@ if ($formSubmitted) {
 }
 
 require 'form-view.php';
-
-// TODO: at least one checkbox obligatory
