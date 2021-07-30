@@ -47,25 +47,30 @@ $totalValue = 0;
 
 function validate()
 {
-    $emptyFields = [];
+    $invalidFields = [];
     // This function will send a list of invalid fields back
     if (empty($_POST['email'])) {
-        array_push($emptyFields, 'email');
+        array_push($invalidFields, 'email');
     }
     if (empty($_POST['street'])) {
-        array_push($emptyFields, 'street');
+        array_push($invalidFields, 'street');
     }
     if (empty($_POST['streetnumber'])) {
-        array_push($emptyFields, 'streetnumber');
+        array_push($invalidFields, 'streetnumber');
     }
     if (empty($_POST['city'])) {
-        array_push($emptyFields, 'city');
+        array_push($invalidFields, 'city');
     }
     if (empty($_POST['zipcode'])) {
-        array_push($emptyFields, 'zipcode');
+        array_push($invalidFields, 'zipcode');
     }
-    var_dump($emptyFields);
-    return $emptyFields;
+    if (!is_numeric($_POST['zipcode'])) {
+        array_push($invalidFields, 'zipcodeInvalid');
+    }
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        array_push($invalidFields, 'emailInvalid');
+    }
+    return $invalidFields;
 }
 
 function handleForm($products)
@@ -94,6 +99,10 @@ function handleForm($products)
         if (in_array("email", $invalidFields)) {
             $errorMsg = 'Please fill in your E-mail.';
         }
+        if (in_array("emailInvalid", $invalidFields)) {
+            $errorMsg .= '<br>';
+            $errorMsg .= "Invalid E-mail format.";
+        }
         if (in_array("street", $invalidFields)) {
             $errorMsg .= '<br>';
             $errorMsg .= 'Please fill in your Street.';
@@ -106,19 +115,15 @@ function handleForm($products)
             $errorMsg .= '<br>';
             $errorMsg .= 'Please fill in your City.';
         }
+        if (in_array("zipcodeInvalid", $invalidFields)) {
+            $errorMsg .= '<br>';
+            $errorMsg .= "Zipcode can only have numeric values.";
+        }
         if (in_array("zipcode", $invalidFields)) {
             $errorMsg .= '<br>';
             $errorMsg .= 'Please fill in your Zipcode.';
         }
         return $errorMsg;
-    }
-    if (!is_numeric($_POST['zipcode'])) {
-        $errorNumeric = "Zipcode can only have numeric values.";
-        return $errorNumeric;
-    }
-    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-        $errorEmail = "Invalid email format";
-        return $errorEmail;
     }
     else {
         // TODO: handle successful submission
