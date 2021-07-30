@@ -68,7 +68,7 @@ function validate()
     return $emptyFields;
 }
 
-function handleForm()
+function handleForm($products)
 {
     // TODO: form related tasks (step 1)
 
@@ -92,25 +92,25 @@ function handleForm()
     if (!empty($invalidFields)) {
         // TODO: handle errors
         if (in_array("email", $invalidFields)) {
-            $message = 'Please fill in your E-mail.';
+            $errorMsg = 'Please fill in your E-mail.';
         }
         if (in_array("street", $invalidFields)) {
-            $message .= '<br>';
-            $message .= 'Please fill in your Street.';
+            $errorMsg .= '<br>';
+            $errorMsg .= 'Please fill in your Street.';
         }
         if (in_array("streetnumber", $invalidFields)) {
-            $message .= '<br>';
-            $message .= 'Please fill in your Street number.';
+            $errorMsg .= '<br>';
+            $errorMsg .= 'Please fill in your Street number.';
         }
         if (in_array("city", $invalidFields)) {
-            $message .= '<br>';
-            $message .= 'Please fill in your City.';
+            $errorMsg .= '<br>';
+            $errorMsg .= 'Please fill in your City.';
         }
         if (in_array("zipcode", $invalidFields)) {
-            $message .= '<br>';
-            $message .= 'Please fill in your Zipcode.';
+            $errorMsg .= '<br>';
+            $errorMsg .= 'Please fill in your Zipcode.';
         }
-        return $message;
+        return $errorMsg;
     } else {
         // TODO: handle successful submission
         return $message;
