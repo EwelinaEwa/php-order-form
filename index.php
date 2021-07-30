@@ -141,3 +141,5 @@ if ($formSubmitted) {
 }
 
 require 'form-view.php';
+
+// TODO: at least one checkbox obligatory
