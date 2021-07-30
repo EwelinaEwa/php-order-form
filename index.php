@@ -127,7 +127,7 @@ function handleForm($products)
     }
     else {
         // TODO: handle successful submission
-        unset($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode']);
+        unset($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode'], $_POST['products']);
         return '<div class="alert alert-success"> ' . $message . '</div>';
 
     }
