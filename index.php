@@ -33,9 +33,9 @@ function whatIsHappening() {
 whatIsHappening();
 
 
-$host = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+$host = $_SERVER['REQUEST_URI'];
 var_dump($host);
-if($host == "localhost/beCode/3.The-Mountain/03.Order-form/php-order-form/?PHP=1") {
+if($host == "/beCode/3.The-Mountain/03.Order-form/php-order-form/?PHP=1") {
 
     $products = [
         ['name' => 'PHP Novice - brown charm', 'price' => 100],

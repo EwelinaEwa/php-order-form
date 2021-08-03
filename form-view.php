@@ -25,7 +25,7 @@
                 <a class="nav-link active" href="?PHP=1">Order PHP Charms</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?JS=0">Order JS Charms</a>
+                <a class="nav-link" href="?JS=1">Order JS Charms</a>
             </li>
         </ul>
     </nav>
