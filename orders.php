@@ -25,5 +25,17 @@ class Order
         $this->orderedItems=$orderedItems;
     }
 
+    public function orderConfirmation()
+    {
+        $message = 'Your address: ' . $this->street . ' ' . $this->streetNumber . ', ' . $this->zipcode . ' ' . $this->city;
+        $message .= '<br>';
+        $message .= 'Your email: ' . $this->email;
+        $message .= '<br>';
+        $message .= '<br>';
+        $message .= 'You have ordered the following products: <br>' . implode('<br>', $this->orderedItems);
+
+        return '<div class="alert alert-success"> ' . $message . '</div>';
+    }
+
 
 }

@@ -150,17 +150,7 @@ function handleForm($products)
         }
 
         $order2021_001 = new Order($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode'], $productNames);
-        var_dump($order2021_001);
-
-        $message = 'Your address: ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
-        $message .= '<br>';
-        $message .= 'Your email: ' . $_POST['email'];
-        $message .= '<br>';
-        $message .= '<br>';
-        $message .= 'You have ordered the following products: <br>' . implode('<br>', $productNames);
-//      unset($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode'], $_POST['products']);
-
-        return '<div class="alert alert-success"> ' . $message . '</div>';
+        echo $order2021_001->orderConfirmation();
     }
 }
 
@@ -171,7 +161,7 @@ if ($formSubmitted) {
     $confirmationMessage = handleForm($products);
 }
 
-session_destroy();
+//session_destroy();
 
 
 require 'form-view.php';
