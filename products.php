@@ -8,8 +8,8 @@ error_reporting(E_ALL);
 
 class Product
 {
-    private string $name;
-    private int $price;
+    public string $name;
+    public int $price;
 
     public function __construct($name, $price)
     {
