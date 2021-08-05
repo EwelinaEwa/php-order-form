@@ -10,6 +10,8 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+require "orders.php";
+
 
 // We are going to use session variables so we need to enable sessions
 session_start();
@@ -34,7 +36,6 @@ whatIsHappening();
 
 
 $host = basename($_SERVER['REQUEST_URI']);
-var_dump($host);
 if($host == "?PHP=1") {
 
     $products = [
@@ -148,6 +149,9 @@ function handleForm($products)
             $productNames[] = $products[$productNumber]['name'];
         }
 
+        $order2021_001 = new Order($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode'], $productNames);
+        var_dump($order2021_001);
+
         $message = 'Your address: ' . $_POST['street'] . ' ' . $_POST['streetnumber'] . ', ' . $_POST['zipcode'] . ' ' . $_POST['city'];
         $message .= '<br>';
         $message .= 'Your email: ' . $_POST['email'];
@@ -167,7 +171,7 @@ if ($formSubmitted) {
     $confirmationMessage = handleForm($products);
 }
 
-//session_destroy();
+session_destroy();
 
 
 require 'form-view.php';
