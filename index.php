@@ -98,6 +98,19 @@ function validate()
     return $invalidFields;
 }
 
+function delivery()
+{
+
+    if(isset($_POST["delivery"]))
+    {
+        return '<div class="alert alert-success"> ' . "You selected Express Delivery. Your products will be delivered within 2 days." . '</div>';
+
+    } else
+    {
+        return '<div class="alert alert-success"> ' . "You selected Standard Delivery. Your products will be delivered within 5 days." . '</div>';
+    }
+}
+
 function handleForm($products)
 {
     if(isset($_POST["submit"])) {
@@ -155,6 +168,7 @@ function handleForm($products)
 
         $order2021_001 = new Order($_POST['email'], $_POST['street'], $_POST['streetnumber'], $_POST['city'], $_POST['zipcode'], $productNames);
         echo $order2021_001->orderConfirmation();
+        echo delivery();
     }
 }
 

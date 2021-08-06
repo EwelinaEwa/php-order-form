@@ -74,6 +74,11 @@
                     <?= $product->formattedPrice()?></label><br />
             <?php endforeach; ?>
         </fieldset>
+        <fieldset>
+            <legend>Delivery</legend>
+            <input type="checkbox" value="1" name="delivery">
+            <label for="delivery">Express Delivery - 5€</label>
+        </fieldset>
 
         <button type="submit" name="submit" class="btn btn-primary">Order!</button>
     </form>
