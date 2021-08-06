@@ -11,9 +11,14 @@ class Product
     public string $name;
     public int $price;
 
-    public function __construct($name, $price)
+    function __construct($name, $price)
     {
         $this->name = $name;
         $this->price = $price;
+    }
+
+    public function formattedPrice()
+    {
+        return "€" . number_format($this->price, 2);
     }
 }

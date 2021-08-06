@@ -15,7 +15,7 @@ class Order
     private string $zipcode;
     private array $orderedItems;
 
-    public function __construct($email, $street, $streetNumber, $city, $zipcode, $orderedItems)
+    function __construct($email, $street, $streetNumber, $city, $zipcode, $orderedItems)
     {
         $this->email = $email;
         $this->street = $street;

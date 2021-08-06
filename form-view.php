@@ -18,17 +18,6 @@
             <?= $confirmationMessage ?>
     <?php }; ?>
 
-    <?php // Navigation for when you need it ?>
-    <nav>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="?PHP=1">Order PHP Charms</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?JS=1">Order JS Charms</a>
-            </li>
-        </ul>
-    </nav>
     <form method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -63,13 +52,26 @@
             </div>
         </fieldset>
 
+        <?php // Navigation for when you need it ?>
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active bg-primary text-white border" href="?PHP">Order PHP Charms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bg-primary text-white border ml-5" href="?JS">Order JS Charms</a>
+                </li>
+            </ul>
+        </nav>
+
+
         <fieldset>
             <legend>Products</legend>
             <?php foreach ($products as $i => $product): ?>
                 <label>
 					<?php // <?= is equal to <?php echo ?>
-                    <input type="checkbox" value="1" <?php if(isset($_POST['products'][$i])) { foreach($_POST['products'] as $tmp) { if($tmp == "1") { echo "checked=\"checked\""; }}} ?> name="products[<?php echo $i ?>]"/> <?php echo $product->name ?> -
-                    &euro; <?= number_format($product->price, 2) ?></label><br />
+                    <input type="checkbox" value="1" <?php if(isset($_POST['products'][$i])) { foreach($_POST['products'] as $tmp) { if($tmp == "1") { echo "checked=\"checked\""; }}} ?> name="products[<?= $i ?>]"/> <?= $product->name ?> -
+                    <?= $product->formattedPrice()?></label><br />
             <?php endforeach; ?>
         </fieldset>
 
