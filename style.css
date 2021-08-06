@@ -1,0 +1,38 @@
+body {
+    background: black;
+    color: white;
+}
+
+h1 {
+    position: relative;
+}
+
+form {
+    position: relative;
+}
+
+.container {
+    position: relative;
+}
+
+.container::before {
+    content: "";
+    background-image: url("markus-spiske-iar-afB0QQw-unsplash.jpg");
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.5;
+}
+
+footer {
+    text-align: center;
+    position: relative;
+
+}
+
+.contribution {
+    text-align: right;
+}

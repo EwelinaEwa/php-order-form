@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css"
           rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
     <title>PHP charms</title>
 </head>
 <body>
@@ -56,10 +57,10 @@
         <nav>
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active bg-primary text-white border" href="?PHP">Order PHP Charms</a>
+                    <a class="nav-link active btn btn-light text-black mt-5 mb-2" href="?PHP">Order PHP Charms</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link bg-primary text-white border ml-5" href="?JS">Order JS Charms</a>
+                    <a class="nav-link btn btn-light text-black ml-5 mt-5 mb-2" href="?JS">Order JS Charms</a>
                 </li>
             </ul>
         </nav>
@@ -80,16 +81,12 @@
             <label for="delivery">Express Delivery - 5€</label>
         </fieldset>
 
-        <button type="submit" name="submit" class="btn btn-primary">Order!</button>
+        <button type="submit" name="submit" class="btn btn-light text-black mt-2 mb-5">Order!</button>
     </form>
 
-    <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in food and drinks.</footer>
+    <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in charms.</footer>
+    <div class="contribution">Photo by <a href="https://unsplash.com/@markusspiske?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Markus Spiske</a> on <a href="https://unsplash.com/s/photos/code?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></div>
 </div>
 
-<style>
-    footer {
-        text-align: center;
-    }
-</style>
 </body>
 </html>
