@@ -25,6 +25,15 @@ class Order
         $this->orderedItems=$orderedItems;
     }
 
+    function delivery()
+    {
+        if(isset($_POST["delivery"])) {
+            return "You selected Express Delivery. Your products will be delivered within 2 days.";
+        } else {
+            return "You selected Standard Delivery. Your products will be delivered within 5 days.";
+        }
+    }
+
     public function orderConfirmation()
     {
         $message = 'Your address: ' . $this->street . ' ' . $this->streetNumber . ', ' . $this->zipcode . ' ' . $this->city;
@@ -33,6 +42,9 @@ class Order
         $message .= '<br>';
         $message .= '<br>';
         $message .= 'You have ordered the following products: <br>' . implode('<br>', $this->orderedItems);
+        $message .= '<br>';
+        $message .= '<br>';
+        $message .= $this->delivery();
 
         return '<div class="alert alert-success"> ' . $message . '</div>';
     }
