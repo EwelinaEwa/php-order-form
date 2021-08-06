@@ -68,7 +68,19 @@ if($host == "?PHP" || $host == "php-order-form") {
 
 //var_dump($products);
 
-$totalValue = 0;
+function totalPrice($products) {
+    $totalValue = 0;
+    if ((isset($_POST["submit"])) && (!empty($productNumbers))) {
+        $productNumbers = array_keys($_POST['products']);
+        foreach ($productNumbers as $productNumber) {
+            $totalValue += $products[$productNumber]->price;
+        }
+        return number_format($totalValue, 2);
+    } else {
+        return $totalValue;
+    }
+}
+//$totalValue = totalPrice($products);
 
 function validate()
 {

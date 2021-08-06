@@ -84,7 +84,7 @@
         <button type="submit" name="submit" class="btn btn-light text-black mt-2 mb-5">Order!</button>
     </form>
 
-    <footer>You already ordered <strong>&euro; <?php echo $totalValue ?></strong> in charms.</footer>
+    <footer>You already ordered <strong>&euro; <?php echo totalPrice($products) ?></strong> in charms.</footer>
     <p class="contribution">Photo by <a href="https://unsplash.com/@andreiamza2000?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Amza Andrei</a> on <a href="https://unsplash.com/@andreiamza2000?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
     </p>
 </div>

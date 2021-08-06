@@ -9,9 +9,9 @@ error_reporting(E_ALL);
 class Product
 {
     public string $name;
-    public int $price;
+    public float $price;
 
-    function __construct($name, $price)
+    function __construct(string $name, float $price)
     {
         $this->name = $name;
         $this->price = $price;
